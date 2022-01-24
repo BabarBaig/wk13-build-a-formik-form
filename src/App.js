@@ -28,10 +28,10 @@ function App() {
       <form onSubmit={formik.handleSubmit}>
         <div>Email</div>
         <input name="email" id="emailField" type="text" onChange={formik.handleChange} value={formik.values.email}/>
-        {formik.errors.email? <div style={{color:'red'}}>{formik.errors.email}</div>: null}
+        {formik.errors.email? <div id="emailError" style={{color:'red'}}>{formik.errors.email}</div>: null}
         <div>Password</div>
         <input name="paswd" id="pswField"   type="text" onChange={formik.handleChange} value={formik.values.paswd}/>
-        {formik.errors.paswd? <div style={{color:'red'}}>{formik.errors.paswd}</div>: null}
+        {formik.errors.paswd? <div id="pswError" style={{color:'red'}}>{formik.errors.paswd}</div>: null}
         <button type="submit" id="submitBtn">Submit</button>
       </form>
     </div>
