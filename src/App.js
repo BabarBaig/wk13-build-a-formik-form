@@ -11,15 +11,14 @@ function App() {
     },
     onSubmit: values => {
       console.log('form: ', values)
-      alert('Login Successful')
+      if (!formik.errors.email && !formik.errors.paswd)
+        alert('Login Successful')
     },
     validate: values => {
       let errors = {}
       if      (!values.email)                  errors.email = 'Field required'
       else if ( values.email.search('@')===-1) errors.email = 'Username should be an email'
       if      (!values.paswd)                  errors.paswd = 'Field required'
-      console.log(errors.email)
-      console.log(errors.paswd)
       return errors
     }
   })
@@ -29,10 +28,10 @@ function App() {
       <form onSubmit={formik.handleSubmit}>
         <div>Email</div>
         <input name="email" id="emailField" type="text" onChange={formik.handleChange} value={formik.values.email}/>
-        {formik.errors.email? <div style={{color:'red'}}>abcd{formik.errors.email}</div>: null}
+        {formik.errors.email? <div style={{color:'red'}}>{formik.errors.email}</div>: null}
         <div>Password</div>
         <input name="paswd" id="pswField"   type="text" onChange={formik.handleChange} value={formik.values.paswd}/>
-        {formik.errors.paswd? <div style={{color:'red'}}>efgh{formik.errors.paswd}</div>: null}
+        {formik.errors.paswd? <div style={{color:'red'}}>{formik.errors.paswd}</div>: null}
         <button type="submit" id="submitBtn">Submit</button>
       </form>
     </div>
